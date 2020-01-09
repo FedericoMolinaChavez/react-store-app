@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Alert, TouchableHighlight } from 'react-native';
+import { View, Text, Alert, TouchableHighlight, StyleSheet, Dimensions, Image } from 'react-native';
 
 class Initial extends Component {
     constructor(props) {
@@ -8,29 +8,34 @@ class Initial extends Component {
     }
     render() {
         return (
-            <View>
-                <Text>Main</Text>
+            <View style= {styles.GeneralStyle}>
                 <View>
                     <View>
-                        <View>
-                            <TouchableHighlight onPress={() => {Alert.alert("abc"); this.props.navigation.navigate('Gaseosas');}}>
+                        <Image />
+                        <Text style= {styles.GeneralStyle}>Main</Text>
+                    </View>
+                </View>
+                <View style= {styles.GridVertical}>
+                    <View style = {styles.GridHorizontal}>
+                        <View >
+                            <TouchableHighlight style={styles.Card} onPress={() => {Alert.alert("abc"); this.props.navigation.navigate('Gaseosas');}}>
                                 <Text>Bebidas</Text>
                             </TouchableHighlight>
                         </View>
                         <View>
-                            <TouchableHighlight onPress={() => {this.props.navigation.navigate('Desayunos')}}>
+                            <TouchableHighlight style={styles.Card} onPress={() => {this.props.navigation.navigate('Desayunos')}}>
                                 <Text>Desayunos</Text>
                             </TouchableHighlight>
                         </View>
                     </View>
-                    <View>
+                    <View style = {styles.GridHorizontal}>
                         <View>
-                            <TouchableHighlight onPress={() => {this.props.navigation.navigate('Almuerzos')}}>
+                            <TouchableHighlight style={styles.Card} onPress={() => {this.props.navigation.navigate('Almuerzos')}}>
                                 <Text>Almuerzos</Text>
                             </TouchableHighlight>
                         </View>
                         <View>
-                            <TouchableHighlight onPress={() => {this.props.navigation.navigate('Vinos')}}>
+                            <TouchableHighlight style={styles.Card} onPress={() => {this.props.navigation.navigate('Vinos')}}>
                                 <Text>Vinos</Text>
                             </TouchableHighlight>
                         </View>
@@ -41,6 +46,27 @@ class Initial extends Component {
     }
 }
 
+const styles =  StyleSheet.create({
+    GridVertical : {
+        flex: 5,
+        flexDirection: 'column',
+        justifyContent: 'space-around',
+        alignContent: 'center'
 
+    },
+    GridHorizontal : {
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        alignContent: 'center'
+    },
+    Card: {
+        width: Dimensions.get('window').width*0.35,
+        height: Dimensions.get('window').width*0.35,
+        backgroundColor: '#f9a18e'
+    },
+    GeneralStyle : {
+        flex: 1
+    }
+})
 
 export default Initial;
